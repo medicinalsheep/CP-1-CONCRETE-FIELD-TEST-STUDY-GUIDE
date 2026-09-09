@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Unofficial interactive study guide for ACI Concrete Field Testing Technician—Grade I (CP-1). Supplementary aid only. Purchase official ACI and ASTM materials.">
+  <meta name="color-scheme" content="light dark">
+  <title>ACI CP-1 Field Testing Study Guide (Unofficial)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1b365d;
+      --navy-2: #16324f;
+      --steel: #3d4f63;
+      --concrete: #8b9198;
+      --dust: #ece8e1;
+      --paper: #f6f3ed;
+      --ink: #1c2430;
+      --muted: #5b6573;
+      --orange: #e85d04;
+      --orange-2: #f48c06;
+      --safety: #ff6b1a;
+      --blue: #2b6cb0;
+      --blue-soft: #d6e6f5;
+      --ok: #2f6f4e;
+      --ok-bg: #e4f3ea;
+      --warn: #9a3412;
+      --warn-bg: #fde8d8;
+      --bad: #9b1c1c;
+      --bad-bg: #fde8e8;
+      --card: #ffffff;
+      --line: #d9d3c8;
+      --shadow: 0 10px 30px rgba(27, 54, 93, 0.08);
+      --radius: 14px;
+      --sidebar: 280px;
+      --header: 64px;
+      --focus: 0 0 0 3px #fff, 0 0 0 6px var(--orange);
+      --mono: ui-monospace, "Cascadia Code", "Segoe UI Mono", Consolas, monospace;
+      --sans: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+      --display: "Barlow Condensed", "Arial Narrow", "Segoe UI", sans-serif;
+    }
+    [data-theme="dark"] {
+      --navy: #8bb4e0;
+      --navy-2: #d7e6f7;
+      --steel: #a8b4c3;
+      --concrete: #9aa3ad;
+      --dust: #1a222c;
+      --paper: #121820;
+      --ink: #e8edf4;
+      --muted: #a7b1be;
+      --orange: #ff8a3d;
+      --orange-2: #ffb347;
+      --blue: #7eb0e0;
+      --blue-soft: #1e334c;
+      --ok: #6dcea0;
+      --ok-bg: #163226;
+      --warn: #ffb080;
+      --warn-bg: #3a2418;
+      --bad: #ff9b9b;
+      --bad-bg: #3a1b1b;
+      --card: #1b2430;
+      --line: #2d3948;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: var(--sans);
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 400px at 10% -10%, rgba(232, 93, 4, 0.08), transparent 50%),
+        linear-gradient(180deg, var(--dust), var(--paper) 220px);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+    img, svg { max-width: 100%; }
+    a { color: var(--blue); }
+    a:hover { color: var(--orange); }
+    :focus-visible { outline: none; box-shadow: var(--focus); }
+    .skip {
+      position: absolute; left: 8px; top: -40px; z-index: 100;
+      background: var(--orange); color: #fff; padding: 8px 12px; border-radius: 8px;
+    }
+    .skip:focus { top: 8px; }
+    .app-header {
+      position: sticky; top: 0; z-index: 40;
+      height: var(--header);
+      display: flex; align-items: center; gap: 12px;
+      padding: 0 16px;
+      background: color-mix(in srgb, var(--card) 88%, transparent);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .brand {
+      display: flex; align-items: center; gap: 10px; min-width: 0;
+      text-decoration: none; color: inherit;
+    }
+    .logo {
+      width: 38px; height: 38px; flex: none;
+      background: var(--navy-2);
+      color: #fff;
+      border-radius: 10px;
+      display: grid; place-items: center;
+    }
+    [data-theme="dark"] .logo { background: #244a78; }
+    .brand-text { display: flex; flex-direction: column; min-width: 0; }
+    .brand-text strong {
+      font-family: var(--display); font-size: 1.15rem; letter-spacing: .04em;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .brand-text span { font-size: .72rem; color: var(--muted); }
+    .header-actions { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+    .icon-btn, .btn {
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--ink);
+      border-radius: 10px;
+      padding: 8px 12px;
+      font: 600 0.9rem var(--sans);
+      cursor: pointer;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .icon-btn { width: 40px; height: 40px; justify-content: center; padding: 0; }
+    .btn.primary { background: var(--orange); border-color: transparent; color: #fff; }
+    .btn.ghost { background: transparent; }
+    .btn:hover, .icon-btn:hover { border-color: var(--orange); }
+    .layout { display: grid; grid-template-columns: var(--sidebar) 1fr; min-height: calc(100vh - var(--header)); }
+    .sidebar {
+      position: sticky; top: var(--header);
+      height: calc(100vh - var(--header));
+      overflow: auto;
+      padding: 16px 12px 32px;
+      border-right: 1px solid var(--line);
+      background: color-mix(in srgb, var(--card) 70%, transparent);
+    }
+    .nav-label {
+      font-family: var(--display); letter-spacing: .12em; font-size: .8rem;
+      color: var(--muted); padding: 8px 10px 4px; text-transform: uppercase;
+    }
+    .nav a {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 10px; margin: 2px 0; border-radius: 10px;
+      color: var(--ink); text-decoration: none; font-weight: 600; font-size: .92rem;
+    }
+    .nav a:hover, .nav a.active { background: var(--blue-soft); color: var(--navy-2); }
+    .nav .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--line); flex: none;
+    }
+    .nav a.done .dot { background: var(--ok); }
+    .progress-card {
+      margin: 8px 10px 16px; padding: 12px; border: 1px solid var(--line);
+      border-radius: 12px; background: var(--card);
+    }
+    .progress-card strong { display: block; font-size: .85rem; }
+    .bar { height: 8px; background: var(--dust); border-radius: 99px; overflow: hidden; margin: 8px 0; }
+    .bar > span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--orange), var(--orange-2)); transition: width .3s; }
+    .content { padding: 24px 28px 80px; max-width: 980px; }
+    .banner {
+      border: 1px solid color-mix(in srgb, var(--orange) 45%, var(--line));
+      background: var(--warn-bg);
+      color: var(--warn);
+      border-left: 6px solid var(--orange);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin: 0 0 22px;
+    }
+    .banner strong { color: var(--ink); }
+    .hero {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: calc(var(--radius) + 4px);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      margin-bottom: 22px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0 auto 0 0; width: 8px;
+      background: repeating-linear-gradient(135deg, var(--orange), var(--orange) 10px, #1c2430 10px, #1c2430 20px);
+    }
+    .kicker {
+      font-family: var(--display); letter-spacing: .14em; text-transform: uppercase;
+      color: var(--orange); font-size: .85rem; margin: 0 0 6px;
+    }
+    h1, h2, h3, h4 { font-family: var(--display); letter-spacing: .02em; line-height: 1.15; margin: 0 0 .4em; }
+    h1 { font-size: clamp(1.8rem, 3vw, 2.6rem); }
+    h2 { font-size: 1.8rem; }
+    h3 { font-size: 1.25rem; }
+    .lede { font-size: 1.08rem; color: var(--muted); margin: 0 0 16px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      font-size: .8rem; font-weight: 700; padding: 5px 10px; border-radius: 999px;
+      background: var(--blue-soft); color: var(--navy-2);
+    }
+    .chip.orange { background: var(--warn-bg); color: var(--warn); }
+    section.mod { margin: 0 0 28px; scroll-margin-top: 88px; }
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 22px; box-shadow: var(--shadow); margin-bottom: 16px;
+    }
+    .card-head { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 12px; }
+    .astm {
+      font-family: var(--mono); font-size: .78rem; font-weight: 700;
+      background: var(--navy-2); color: #fff; padding: 4px 8px; border-radius: 6px;
+    }
+    [data-theme="dark"] .astm { background: #244a78; }
+    .grid-2, .grid-3 { display: grid; gap: 12px; }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .mini {
+      border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; background: color-mix(in srgb, var(--dust) 55%, var(--card));
+    }
+    .mini h4 { margin-bottom: 6px; }
+    .mini p, .mini li { font-size: .95rem; }
+    ul.clean, ol.clean { margin: 0; padding-left: 1.15rem; }
+    li + li { margin-top: .28rem; }
+    details.acc {
+      border: 1px solid var(--line); border-radius: 12px; padding: 0; background: var(--card); margin: 8px 0;
+    }
+    details.acc summary {
+      cursor: pointer; list-style: none; padding: 12px 14px; font-weight: 700;
+      display: flex; justify-content: space-between; align-items: center; gap: 8px;
+    }
+    details.acc summary::-webkit-details-marker { display: none; }
+    details.acc summary::after { content: "+"; color: var(--orange); font-size: 1.2rem; }
+    details.acc[open] summary::after { content: "–"; }
+    details.acc .acc-body { padding: 0 14px 14px; }
+    .callout {
+      border-radius: 12px; padding: 12px 14px; margin: 12px 0; border: 1px solid var(--line);
+    }
+    .callout.time { background: var(--blue-soft); border-color: transparent; }
+    .callout.pit { background: var(--warn-bg); border-color: transparent; }
+    .callout.ok { background: var(--ok-bg); border-color: transparent; }
+    .callout .t { font-weight: 800; display: block; margin-bottom: 4px; }
+    table {
+      width: 100%; border-collapse: collapse; font-size: .95rem; overflow: hidden;
+    }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+    .diagram {
+      background: color-mix(in srgb, var(--dust) 70%, var(--card));
+      border: 1px dashed var(--line); border-radius: 12px; padding: 10px; text-align: center;
+    }
+    .diagram figcaption { font-size: .8rem; color: var(--muted); margin-top: 6px; }
+    .actions-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .self-check { border-top: 1px dashed var(--line); margin-top: 16px; padding-top: 12px; }
+    .q { margin: 10px 0 16px; }
+    .q p { margin: 0 0 8px; font-weight: 650; }
+    .opts { display: grid; gap: 6px; }
+    .opts label {
+      display: flex; gap: 8px; align-items: flex-start;
+      border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; cursor: pointer;
+    }
+    .opts label:hover { border-color: var(--orange); }
+    .opts label.correct { background: var(--ok-bg); border-color: var(--ok); }
+    .opts label.wrong { background: var(--bad-bg); border-color: var(--bad); }
+    .explain { display: none; margin-top: 8px; font-size: .92rem; color: var(--muted); }
+    .explain.show { display: block; }
+    #quiz-box .q-card { padding: 8px 0 16px; }
+    .quiz-meta { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; color: var(--muted); font-size: .9rem; }
+    .score-ring { font-family: var(--display); font-size: 2.4rem; color: var(--orange); }
+    .footer {
+      max-width: 980px; padding: 8px 0 0; color: var(--muted); font-size: .85rem;
+    }
+    .overlay {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 30;
+    }
+    .overlay.show { display: block; }
+    .menu-btn { display: none; }
+    .to-top {
+      position: fixed; right: 16px; bottom: 16px; z-index: 20;
+      width: 44px; height: 44px; border-radius: 50%;
+    }
+    body.study { font-size: 1.04rem; }
+    body.study .opts input { accent-color: var(--orange); }
+    body.study details.acc { border-color: color-mix(in srgb, var(--orange) 55%, var(--line)); }
+    body.study .to-top { display: none; }
+    body.study #quiz-controls { opacity: .95; }
+    @media (max-width: 920px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar {
+        position: fixed; left: 0; top: var(--header); z-index: 35;
+        transform: translateX(-105%); transition: transform .2s; width: min(86vw, 320px);
+        background: var(--card); height: calc(100vh - var(--header));
+      }
+      .sidebar.open { transform: none; }
+      .menu-btn { display: inline-flex; }
+      .content { padding: 16px 14px 80px; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .brand-text span { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+    @media print {
+      .app-header, .sidebar, .overlay, .to-top, .header-actions, .menu-btn, .actions-row, #quiz-controls {
+        display: none !important;
+      }
+      .layout, .content { display: block; padding: 0; max-width: none; }
+      .card, .hero, .banner { box-shadow: none; break-inside: avoid; }
+      details.acc { border: 1px solid #ccc; }
+      details.acc .acc-body { display: block !important; }
+      a { color: #000; text-decoration: none; }
+      body { background: #fff; color: #000; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="app-header">
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open table of contents" aria-expanded="false">☰</button>
+    <a class="brand" href="#overview">
+      <span class="logo" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M7 20h10l-2-9H9l-2 9z" fill="#ff8a3d"/>
+          <path d="M8 11h8l1-4H7l1 4z" fill="#fff"/>
+          <rect x="4" y="20" width="16" height="2" rx="1" fill="#c5d4e8"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <strong>CP-1 FIELD TESTING</strong>
+        <span>Unofficial Grade I study companion</span>
+      </span>
+    </a>
+    <div class="header-actions">
+      <span class="chip orange hide-study" id="headerProgress">0/10 reviewed</span>
+      <button class="btn ghost hide-study" id="studyBtn" type="button" aria-pressed="false">Study mode</button>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle color theme">◐</button>
+      <button class="btn ghost" id="printBtn" type="button">Print</button>
+    </div>
+  </header>
+  <div class="overlay" id="overlay" hidden></div>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar" aria-label="Table of contents">
+      <div class="progress-card">
+        <strong>Study progress</strong>
+        <div class="bar" aria-hidden="true"><span id="progBar"></span></div>
+        <div id="progText">0 of 10 sections marked reviewed</div>
+      </div>
+      <nav class="nav" id="toc">
+        <div class="nav-label">Start here</div>
+        <a href="#overview" data-mod="overview"><span class="dot"></span>Overview &amp; disclaimers</a>
+        <a href="#program" data-mod="program"><span class="dot"></span>Certification program</a>
+        <a href="#timing" data-mod="timing"><span class="dot"></span>Critical numbers sheet</a>
+        <div class="nav-label">Seven ASTM methods</div>
+        <a href="#c172" data-mod="c172"><span class="dot"></span>C172 Sampling</a>
+        <a href="#c1064" data-mod="c1064"><span class="dot"></span>C1064 Temperature</a>
+        <a href="#c143" data-mod="c143"><span class="dot"></span>C143 Slump</a>
+        <a href="#c138" data-mod="c138"><span class="dot"></span>C138 Density / yield</a>
+        <a href="#c231" data-mod="c231"><span class="dot"></span>C231 Pressure air</a>
+        <a href="#c173" data-mod="c173"><span class="dot"></span>C173 Volumetric air</a>
+        <a href="#c31" data-mod="c31"><span class="dot"></span>C31 Specimens</a>
+        <div class="nav-label">Practice</div>
+        <a href="#quiz"><span class="dot"></span>Quiz mode</a>
+        <a href="#resources"><span class="dot"></span>Official resources</a>
+      </nav>
+    </aside>
+    <main class="content" id="main">
+      <div class="banner" role="note">
+        <strong>Unofficial supplementary study tool — not ACI or ASTM material.</strong>
+        This page does not replace the ACI CP-1 Technician Workbook or the current ASTM standards. It does not reproduce workbook text, official checklists, performance scripts, or practice-exam items. Buy the latest CP-1 workbook and the seven ASTM documents, then use this file only as a high-level organizer and self-check.
+      </div>
+
+      <section class="mod hero" id="overview">
+        <p class="kicker">ACI Concrete Field Testing Technician — Grade I</p>
+        <h1>Interactive study guide for CP-1</h1>
+        <p class="lede">A single-file companion for understanding the seven field tests, why the steps exist, and which timings and accuracies the Job Task Analysis (JTA) treats as must-know. Built for review — not as a substitute for the official program.</p>
+        <div class="chips" style="margin-bottom:14px;">
+          <span class="chip">Written + performance</span>
+          <span class="chip">7 ASTM methods</span>
+          <span class="chip orange">Verify every number in current ASTM</span>
+        </div>
+        <div class="grid-2">
+          <div class="mini">
+            <h4>How to use this file</h4>
+            <ol class="clean">
+              <li>Purchase CP-1 (current edition) and the ASTM standards.</li>
+              <li>Read each official method, then skim the matching module here.</li>
+              <li>Mark a module reviewed only after you can teach the “why.”</li>
+              <li>Run Quiz mode on timings, equipment limits, and invalid-test rules.</li>
+            </ol>
+          </div>
+          <div class="mini">
+            <h4>What this file will not do</h4>
+            <ul class="clean">
+              <li>It will not certify you.</li>
+              <li>It will not copy ACI exam questions or examiner scripts.</li>
+              <li>It will not reprint ASTM procedure language.</li>
+              <li>It cannot beat hands-on practice with real equipment.</li>
+            </ul>
+          </div>
+        </div>
+        <p style="margin:16px 0 0;color:var(--muted);font-size:.92rem;">Numbers shown as “commonly cited study points” are educational memory aids drawn from publicly discussed JTA topics. ASTM documents are revised. If this page and your purchased standard disagree, the standard wins.</p>
+      </section>
+
+      <section class="mod card" id="program" data-mod="program">
+        <p class="kicker">Program map</p>
+        <h2>Certification, exams, and the JTA</h2>
+        <p class="banner" style="margin-top:8px;">Confirm current exam rules, fees, recertification, and passing scores with ACI or your Local Sponsoring Group. Policies change.</p>
+        <div class="grid-2">
+          <div>
+            <h3>What Grade I is for</h3>
+            <p>The credential shows you can sample fresh concrete and run the standard field tests used for acceptance work: temperature, slump, density/yield, air content, and making/curing specimens. Owners, producers, and labs look for it because the tests feed strength, air, and uniformity decisions.</p>
+            <h3>Two exams, both required</h3>
+            <ul class="clean">
+              <li><strong>Written exam</strong> — closed-book knowledge of the seven methods, typically built from the published JTA. Expect emphasis on sequence, timings, equipment limits, calculations at a conceptual level, and “what makes a test invalid.”</li>
+              <li><strong>Performance exam</strong> — you demonstrate the methods with equipment. You must satisfy the examiner on each required procedure. Notes and coaching are not a substitute for fluent hands.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Why the JTA matters</h3>
+            <p>ACI publishes a Job Task Analysis that lists the knowledge and skills the exams are designed to sample. Study the JTA as a blueprint: if a task is listed, you should be able to do it without looking it up. This guide groups those public themes; it is not the JTA itself.</p>
+            <div class="callout time">
+              <span class="t">Study habit that transfers to the floor</span>
+              For every step, ask: What happens to the result if I skip this? Timing, moisture loss, incomplete consolidation, and contaminated samples are the usual ways field data become fiction.
+            </div>
+            <h3>Recertification mindset</h3>
+            <p>Plan as if the card expires on a five-year cycle and the standards on your shelf may be a newer year than the ones you first learned. Always test against the edition in force for your project and for the exam administration you booked.</p>
+          </div>
+        </div>
+        <div class="actions-row">
+          <button class="btn primary" type="button" data-complete="program">Mark program section reviewed</button>
+        </div>
+      </section>
+
+      <section class="mod card" id="timing" data-mod="timing">
+        <p class="kicker">Memory sheet</p>
+        <h2>Critical timings, counts, and accuracies</h2>
+        <p class="banner">Memory aid only. Verify every cell in the current ASTM method you will be tested on.</p>
+        <div class="table-wrap" style="overflow:auto;">
+          <table>
+            <thead>
+              <tr><th>Theme</th><th>Commonly cited study point</th><th>Why it exists</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Composite sample window</td><td>Finish combining portions in about 15 minutes</td><td>Concrete is changing as soon as water and cement meet.</td></tr>
+              <tr><td>Start slump, temp, air</td><td>Within about 5 minutes after the composite is made</td><td>Those properties drift fast in wind, sun, and evaporation.</td></tr>
+              <tr><td>Start strength specimens</td><td>Within about 15 minutes after the composite is made</td><td>Cylinders must represent the same concrete you just tested.</td></tr>
+              <tr><td>Strength-sample size</td><td>On the order of 1 ft³ (28 L) minimum</td><td>Too little concrete makes biased, unworkable leftovers.</td></tr>
+              <tr><td>Temperature sensor</td><td>~3 in (75 mm) immersion and cover; ±1°F (0.5°C); 2–5 min; report 1°F / 0.5°C</td><td>A shallow or drifting reading is not the mass temperature.</td></tr>
+              <tr><td>Slump cone</td><td>12 in tall, 8 in base, 4 in top; 3 equal-volume layers; 25 rods; lift 5 ± 2 s; finish in 2½ min; read ¼ in (5 mm)</td><td>Geometry and time are the entire test.</td></tr>
+              <tr><td>Rodding / tapping</td><td>25 rod strokes per layer; about 10–15 mallet taps on measures and air bowls</td><td>Under-consolidation traps extra voids; overworking can drive air out.</td></tr>
+              <tr><td>Pressure air</td><td>Report about 0.1%; apply aggregate correction; not for lightweight / highly porous aggregate</td><td>Porous particles “steal” air from the reading.</td></tr>
+              <tr><td>Volumetric air</td><td>Alcohol-assisted; readings often to 0.25%; repeat until consecutive readings agree closely</td><td>Foam and incomplete displacement hide real air.</td></tr>
+              <tr><td>Cylinders</td><td>6×12: 3 layers, ⅝-in rod; 4×8: 2 layers, ⅜-in rod; tap sides; vibrate very stiff mixes</td><td>Layer count and rod size scale with specimen size.</td></tr>
+              <tr><td>Initial curing</td><td>Protect from drying; typical bands near 60–80°F, tighter for high-strength mixes; move to lab after initial set window (often cited 24–48 h transport envelope)</td><td>Early temperature and moisture dominate later strength.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <figure class="diagram" style="margin:14px 0;">
+          <svg viewBox="0 0 640 118" width="100%" height="118" role="img" aria-label="Typical field sequence after sampling">
+            <defs>
+              <linearGradient id="flow" x1="0" x2="1">
+                <stop offset="0" stop-color="#1b365d"/><stop offset="1" stop-color="#e85d04"/>
+              </linearGradient>
+            </defs>
+            <rect x="4" y="28" width="118" height="52" rx="10" fill="#1b365d"/>
+            <text x="63" y="52" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">Sample</text>
+            <text x="63" y="70" text-anchor="middle" fill="#ffb347" font-size="10">remix composite</text>
+            <path d="M126 54h18" stroke="url(#flow)" stroke-width="3"/>
+            <rect x="148" y="28" width="118" height="52" rx="10" fill="#244a78"/>
+            <text x="207" y="52" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">Temperature</text>
+            <text x="207" y="70" text-anchor="middle" fill="#c5d4e8" font-size="10">fast clock</text>
+            <path d="M270 54h18" stroke="url(#flow)" stroke-width="3"/>
+            <rect x="292" y="28" width="100" height="52" rx="10" fill="#2c5282"/>
+            <text x="342" y="52" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">Slump</text>
+            <text x="342" y="70" text-anchor="middle" fill="#c5d4e8" font-size="10">2½ min idea</text>
+            <path d="M396 54h18" stroke="url(#flow)" stroke-width="3"/>
+            <rect x="418" y="28" width="100" height="52" rx="10" fill="#c45c12"/>
+            <text x="468" y="52" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">Air / D</text>
+            <text x="468" y="70" text-anchor="middle" fill="#ffe0c2" font-size="10">C231 or C173</text>
+            <path d="M522 54h18" stroke="url(#flow)" stroke-width="3"/>
+            <rect x="544" y="28" width="90" height="52" rx="10" fill="#e85d04"/>
+            <text x="589" y="52" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">Cylinders</text>
+            <text x="589" y="70" text-anchor="middle" fill="#fff" font-size="10">still on clock</text>
+            <text x="4" y="108" fill="#5b6573" font-size="11">Typical order that fits C172’s clocks — confirm on your project and in the current standards.</text>
+          </svg>
+          <figcaption>Original workflow sketch: fresh tests first, specimens before the composite ages out.</figcaption>
+        </figure>
+        <div class="callout ok">
+          <span class="t">Field sequence that usually fits the clocks</span>
+          Sample and remix → temperature → slump → air (and/or density) → make specimens. Start the fast tests immediately so cylinders still get molded inside the specimen clock.
+        </div>
+        <div class="actions-row">
+          <button class="btn primary" type="button" data-complete="timing">Mark numbers sheet reviewed</button>
+        </div>
+      </section>
+
+      <!-- C172 -->
+      <section class="mod card" id="c172" data-mod="c172">
+        <div class="card-head">
+          <svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true">
+            <rect width="56" height="56" rx="12" fill="#1b365d"/>
+            <path d="M12 18h20v8H18l-6 10h8" stroke="#ff8a3d" stroke-width="2.5" fill="none"/>
+            <rect x="30" y="28" width="14" height="12" rx="2" fill="#c5d4e8"/>
+            <path d="M32 28c2-6 8-6 10 0" stroke="#fff" stroke-width="2" fill="none"/>
+          </svg>
+          <div>
+            <span class="astm">ASTM C172 / C172M</span>
+            <h2>Sampling freshly mixed concrete</h2>
+            <p class="lede" style="margin:0;">If the sample is wrong, every test after it is theater.</p>
+          </div>
+        </div>
+        <p class="banner">High-level educational outline only. Follow the current C172 procedure in your purchased standard and CP-1 workbook.</p>
+        <div class="grid-2">
+          <div>
+            <h3>Purpose &amp; significance</h3>
+            <p>You are building a <em>composite</em> that represents the batch — not the wettest shovel, not the first chute-full, not a pile that has already segregated. Acceptance tests are only as honest as this step.</p>
+            <h3>Key equipment</h3>
+            <ul class="clean">
+              <li>Clean, non-absorbent receptacles and a remixing pan</li>
+              <li>Shovel / scoop appropriate to the discharge</li>
+              <li>Protection from sun, wind, rain, and contamination</li>
+              <li>Means to wet-sieve when a later test cannot accept the full aggregate size</li>
+            </ul>
+          </div>
+          <figure class="diagram">
+            <svg viewBox="0 0 320 160" width="320" height="160" role="img" aria-label="Do not sample the beginning or end of truck discharge">
+              <rect x="8" y="20" width="304" height="120" rx="10" fill="#f6f3ed" stroke="#d9d3c8"/>
+              <path d="M40 50h70l20 40H60z" fill="#8b9198"/>
+              <path d="M70 90c20 10 40 10 70 0" stroke="#e85d04" stroke-width="3" fill="none"/>
+              <text x="46" y="44" font-size="11" fill="#5b6573">start — skip</text>
+              <text x="132" y="78" font-size="12" fill="#1b365d" font-weight="700">middle portions</text>
+              <text x="210" y="128" font-size="11" fill="#5b6573">end — skip</text>
+              <rect x="210" y="48" width="70" height="36" rx="6" fill="#fde8d8"/>
+            </svg>
+            <figcaption>Original diagram: sample the middle of discharge, not the first or last concrete.</figcaption>
+          </figure>
+        </div>
+        <details class="acc" open>
+          <summary>High-level step summary</summary>
+          <div class="acc-body">
+            <ol class="clean">
+              <li>Plan the sample around the tests you will run (strength work needs a larger composite).</li>
+              <li>Take two or more portions from the middle of discharge at spaced intervals; do not intercept the very first or last concrete.</li>
+              <li>Keep elapsed time between first and last portion inside the short composite window.</li>
+              <li>Protect the material while you combine it; remix the composite until it looks uniform.</li>
+              <li>Start temperature, slump, and air promptly; start molding specimens on their slightly longer clock.</li>
+              <li>If a test method cannot accept the maximum aggregate in the mix, wet-sieve as that method requires — then remix what you will actually test.</li>
+            </ol>
+          </div>
+        </details>
+        <div class="callout time"><span class="t">Clocks that show up on exams and job sites</span> Composite portions close together (about 15 min). Fresh-property tests almost immediately (about 5 min). Cylinders soon after (about 15 min). Confirm the current wording in C172.</div>
+        <div class="callout pit">
+          <span class="t">Common pitfalls</span>
+          Sampling a wheelbarrow that already sat in the sun; scooping off a pile; taking only one grab from the chute; forgetting to remix; starting cylinders after slump and air have eaten the whole clock; contaminating the pan with wash water or debris.
+        </div>
+        <div class="self-check" data-quiz="c172"></div>
+        <div class="actions-row">
+          <button class="btn primary" type="button" data-complete="c172">Mark C172 reviewed</button>
+        </div>
+      </section>
+
+      <!-- C1064 -->
+      <section class="mod card" id="c1064" data-mod="c1064">
+        <div class="card-head">
+          <svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true">
+            <rect width="56" height="56" rx="12" fill="#1b365d"/>
+            <rect x="25" y="8" width="6" height="28" rx="3" fill="#fff"/>
+            <circle cx="28" cy="40" r="8" fill="#ff8a3d"/>
+            <path d="M28 18v18" stroke="#1b365d" stroke-width="2"/>
+          </svg>
+          <div>
+            <span class="astm">ASTM C1064 / C1064M</span>
+            <h2>Temperature of freshly mixed concrete</h2>
+            <p class="lede" style="margin:0;">Temperature is both a specification item and the context for every other result.</p>
+          </div>
+        </div>
+        <p class="banner">High-level educational outline only. Follow current C1064 and the CP-1 workbook.</p>
+        <div class="grid-2">
+          <div>
+            <h3>Purpose &amp; significance</h3>
+            <p>Mix temperature affects slump loss, air, set, and later strength. Hot loads can be rejected; cold loads can be damaged by freezing. The reading must represent the concrete mass, not the pan or the air.</p>
+            <h3>Key equipment</h3>
+            <ul class="clean">
+              <li>A thermometer whose accuracy and range match the method (commonly cited: about ±1°F / 0.5°C)</li>
+              <li>Enough concrete so the sensor is buried and surrounded</li>
+              <li>A container when the placement itself cannot provide cover around the sensor</li>
+            </ul>
+          </div>
+          <figure class="diagram">
+            <svg viewBox="0 0 320 160" width="320" height="160" role="img" aria-label="Thermometer immersed and surrounded by concrete">
+              <rect x="70" y="50" width="180" height="90" rx="8" fill="#8b9198"/>
+              <rect x="154" y="18" width="12" height="70" rx="4" fill="#1b365d"/>
+              <circle cx="160" cy="96" r="10" fill="#e85d04"/>
+              <path d="M70 96 H154" stroke="#f6f3ed" stroke-dasharray="4 4"/>
+              <text x="76" y="44" font-size="11" fill="#5b6573">≥ cover all around</text>
+              <text x="176" y="36" font-size="11" fill="#1b365d">leave until stable</text>
+            </svg>
+            <figcaption>Original diagram: immerse the sensor and keep concrete cover around it; wait for a stable reading.</figcaption>
+          </figure>
+        </div>
+        <details class="acc" open>
+          <summary>High-level step summary</summary>
+          <div class="acc-body">
+            <ol class="clean">
+              <li>Place the sensor so it is immersed the required depth and surrounded by concrete in all directions (commonly taught as about 3 in / 75 mm).</li>
+              <li>Keep the instrument in place long enough for equilibrium — typically a few minutes, not a drive-by glance.</li>
+              <li>Read while the sensor is still in the concrete when the device allows it.</li>
+              <li>Record to the method’s resolution (often nearest 1°F or 0.5°C) and finish inside the short post-sampling clock.</li>
+            </ol>
+          </div>
+        </details>
+        <div class="callout time"><span class="t">Accuracy notes</span> A precise-looking display is worthless if the probe is in a thin edge, a sun-baked crust, or a container smaller than the cover distance. Large aggregate may need a larger sample just so the sensor is truly surrounded.</div>
+        <div class="callout pit"><span class="t">Common pitfalls</span> Pulling the thermometer out to read it; using a kitchen gadget with unknown accuracy; measuring leftover mortar in the pan; starting the clock after you already ran slump.</div>
+        <div class="self-check" data-quiz="c1064"></div>
+        <div class="actions-row"><button class="btn primary" type="button" data-complete="c1064">Mark C1064 reviewed</button></div>
+      </section>
+
+      <!-- C143 -->
+      <section class="mod card" id="c143" data-mod="c143">
+        <div class="card-head">
+          <svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true">
+            <rect width="56" height="56" rx="12" fill="#1b365d"/>
+            <path d="M18 44h20l-4-28H22L18 44z" fill="#c5d4e8"/>
+            <path d="M22 16h12v4H22z" fill="#ff8a3d"/>
+          </svg>
+          <div>
+            <span class="astm">ASTM C143 / C143M</span>
+            <h2>Slump of hydraulic-cement concrete</h2>
+            <p class="lede" style="margin:0;">A timed geometry test. If the cone, layers, rod, or lift are wrong, the number is not slump.</p>
+          </div>
+        </div>
+        <p class="banner">High-level educational outline only. Follow current C143 and the CP-1 workbook.</p>
+        <div class="grid-2">
+          <div>
+            <h3>Purpose &amp; significance</h3>
+            <p>Slump is a consistency index used in the field as a batch check. It is not “workability” in the full rheology sense, but a change in slump often flags water, air, or delay problems.</p>
+            <h3>Key equipment</h3>
+            <ul class="clean">
+              <li>Frustum mold: 12 in height, 8 in base diameter, 4 in top diameter</li>
+              <li>Tamping rod: ⅝ in diameter, about 24 in long, hemispherical tip</li>
+              <li>Rigid, non-absorbent, level base</li>
+              <li>Scoop, ruler/scale readable to ¼ in (5 mm)</li>
+            </ul>
+          </div>
+          <figure class="diagram">
+            <svg viewBox="0 0 320 170" width="320" height="170" role="img" aria-label="Slump cone filled in three equal-volume layers">
+              <path d="M70 150 L110 30 H210 L250 150 Z" fill="#d9d3c8" stroke="#1b365d"/>
+              <path d="M84 110h152" stroke="#e85d04" stroke-dasharray="5 4"/>
+              <path d="M96 70h128" stroke="#e85d04" stroke-dasharray="5 4"/>
+              <text x="258" y="48" font-size="11" fill="#1b365d">layer 3</text>
+              <text x="258" y="92" font-size="11" fill="#1b365d">layer 2</text>
+              <text x="258" y="132" font-size="11" fill="#1b365d">layer 1</text>
+              <text x="20" y="24" font-size="11" fill="#5b6573">equal VOLUME, not equal height</text>
+            </svg>
+            <figcaption>Original diagram: three layers of roughly equal volume; the bottom layer is shorter than one-third of the height.</figcaption>
+          </figure>
+        </div>
+        <details class="acc" open>
+          <summary>High-level step summary</summary>
+          <div class="acc-body">
+            <ol class="clean">
+              <li>Dampen the mold and base; do not leave standing water.</li>
+              <li>Hold the mold firmly to the base. Fill in three layers of approximately equal volume.</li>
+              <li>Rod each layer 25 times, distributing strokes. Penetrate into the layer below on the upper lifts.</li>
+              <li>Strike off the top, clean the base, then lift the mold vertically in 5 ± 2 seconds with no twisting or tapping.</li>
+              <li>Measure the vertical difference between the original mold height and the displaced original center of the top surface, to the nearest ¼ in (5 mm).</li>
+              <li>Complete the test inside the short elapsed-time limit (commonly 2½ minutes from the start of filling).</li>
+            </ol>
+          </div>
+        </details>
+        <div class="callout time"><span class="t">Invalid-test instinct</span> If the concrete shears or falls away to one side instead of slumping symmetrically, discard and retest. Do not “average” a collapsed pile.</div>
+        <div class="callout pit"><span class="t">Common pitfalls</span> Equal-height layers instead of equal-volume; 25 taps instead of 25 rods; lifting too slowly; measuring the edge instead of the original center; running the test on a bouncing pickup tailgate; using a cone with dented dimensions.</div>
+        <div class="self-check" data-quiz="c143"></div>
+        <div class="actions-row"><button class="btn primary" type="button" data-complete="c143">Mark C143 reviewed</button></div>
+      </section>
+
+      <!-- C138 -->
+      <section class="mod card" id="c138" data-mod="c138">
+        <div class="card-head">
+          <svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true">
+            <rect width="56" height="56" rx="12" fill="#1b365d"/>
+            <rect x="16" y="18" width="24" height="22" rx="3" fill="#c5d4e8"/>
+            <rect x="14" y="40" width="28" height="6" rx="2" fill="#ff8a3d"/>
+          </svg>
+          <div>
+            <span class="astm">ASTM C138 / C138M</span>
+            <h2>Density (unit weight), yield, and gravimetric air</h2>
+            <p class="lede" style="margin:0;">A mass-and-volume test that tells you how much concrete the batch actually made.</p>
+          </div>
+        </div>
+        <p class="banner">High-level educational outline only. Follow current C138 and the CP-1 workbook for formulas and reporting.</p>
+        <div class="grid-2">
+          <div>
+            <h3>Purpose &amp; significance</h3>
+            <p>Density is the measured mass of concrete in a calibrated measure. From density you can compute yield (volume produced) and, with theoretical density, a gravimetric air content. It catches over-yield, under-yield, and air problems that a slump cone cannot see.</p>
+            <h3>Key equipment</h3>
+            <ul class="clean">
+              <li>Calibrated measure (bowl) of known volume</li>
+              <li>Balance/scale of suitable capacity and sensitivity</li>
+              <li>Tamping rod, mallet, strike-off plate</li>
+              <li>Vibrator when the method requires it for very low-slump concrete</li>
+            </ul>
+            <figure class="diagram" style="margin-top:12px;">
+              <svg viewBox="0 0 280 120" width="280" height="120" role="img" aria-label="Density measure filled flush and weighed">
+                <ellipse cx="110" cy="38" rx="52" ry="14" fill="#c5d4e8" stroke="#1b365d"/>
+                <path d="M58 38 v48 c0 18 104 18 104 0 V38" fill="#8b9198" stroke="#1b365d"/>
+                <ellipse cx="110" cy="86" rx="52" ry="14" fill="#6f757c"/>
+                <rect x="188" y="30" width="70" height="50" rx="8" fill="#1b365d"/>
+                <text x="223" y="52" text-anchor="middle" fill="#fff" font-size="12">MASS</text>
+                <text x="223" y="68" text-anchor="middle" fill="#ffb347" font-size="10">÷ volume</text>
+                <text x="20" y="114" fill="#5b6573" font-size="11">Strike off flush · clean the exterior · then weigh</text>
+              </svg>
+              <figcaption>Original diagram: density is only honest if the bowl is a known volume and the mass is only the concrete inside it.</figcaption>
+            </figure>
+          </div>
+          <div class="mini">
+            <h4>Relationships to remember (concepts, not a formula sheet to photocopy)</h4>
+            <ul class="clean">
+              <li><strong>Density D</strong> = net mass of concrete / volume of the measure</li>
+              <li><strong>Yield</strong> = total mass of batched materials / density (gives volume produced)</li>
+              <li><strong>Relative yield</strong> compares actual yield with the design volume</li>
+              <li><strong>Gravimetric air</strong> compares theoretical air-free density with measured density</li>
+            </ul>
+            <p style="margin:.6rem 0 0;font-size:.9rem;color:var(--muted);">Practice the algebra in your official workbook until unit conversions (ft³ vs yd³, lb vs kg) are automatic.</p>
+          </div>
+        </div>
+        <details class="acc" open>
+          <summary>High-level step summary</summary>
+          <div class="acc-body">
+            <ol class="clean">
+              <li>Confirm the measure’s volume is current (calibration is not a forever number).</li>
+              <li>Fill in the required number of equal-volume layers for that measure size.</li>
+              <li>Consolidate each layer (rod 25 times when rodding applies; tap the sides with a mallet the specified number of times).</li>
+              <li>Strike off flush, clean all concrete from the exterior, and weigh.</li>
+              <li>Compute density, then yield / air as required by the project and the method.</li>
+            </ol>
+          </div>
+        </details>
+        <div class="callout pit"><span class="t">Common pitfalls</span> Weighing mortar stuck to the outside of the bowl; using an uncalibrated measure; skipping mallet taps; strike-off that leaves a mound or a hollow; mixing up batch weights (SSD vs as-batched water).</div>
+        <div class="self-check" data-quiz="c138"></div>
+        <div class="actions-row"><button class="btn primary" type="button" data-complete="c138">Mark C138 reviewed</button></div>
+      </section>
+
+      <!-- C231 -->
+      <section class="mod card" id="c231" data-mod="c231">
+        <div class="card-head">
+          <svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true">
+            <rect width="56" height="56" rx="12" fill="#1b365d"/>
+            <circle cx="28" cy="30" r="14" fill="#c5d4e8"/>
+            <path d="M28 18v12l8 4" stroke="#1b365d" stroke-width="2" fill="none"/>
+            <circle cx="28" cy="30" r="3" fill="#ff8a3d"/>
+          </svg>
+          <div>
+            <span class="astm">ASTM C231 / C231M</span>
+            <h2>Air content by the pressure method</h2>
+            <p class="lede" style="margin:0;">The everyday Type B meter test — powerful, fast, and the wrong tool for porous lightweight aggregate.</p>
+          </div>
+        </div>
+        <p class="banner">High-level educational outline only. Follow current C231, meter manufacturer instructions, and the CP-1 workbook.</p>
+        <div class="grid-2">
+          <div>
+            <h3>Purpose &amp; significance</h3>
+            <p>Entrained air protects against freeze–thaw. Too little air risks durability; too much air costs strength. Pressure meters infer air from how the concrete compresses. They assume aggregate particles do not have a large, compressible pore system.</p>
+            <h3>Key equipment</h3>
+            <ul class="clean">
+              <li>Type A or Type B air meter (Type B is common in North American field work)</li>
+              <li>Calibration vessel / equipment required by the method</li>
+              <li>Rod, mallet, strike-off bar or plate, syringe/water bottle, clamps</li>
+              <li>Known aggregate correction factor for that mixture</li>
+            </ul>
+          </div>
+          <figure class="diagram">
+            <svg viewBox="0 0 320 160" width="320" height="160" role="img" aria-label="Type B meter bowl with lid and gauge">
+              <rect x="90" y="70" width="140" height="60" rx="8" fill="#8b9198"/>
+              <rect x="100" y="40" width="120" height="36" rx="8" fill="#1b365d"/>
+              <circle cx="160" cy="58" r="14" fill="#f6f3ed" stroke="#ff8a3d" stroke-width="3"/>
+              <path d="M160 58 L168 50" stroke="#1b365d" stroke-width="2"/>
+              <text x="20" y="30" font-size="12" fill="#1b365d">Type B — air chamber + gauge</text>
+              <text x="20" y="150" font-size="11" fill="#5b6573">Not for lightweight / highly porous aggregate</text>
+            </svg>
+            <figcaption>Original diagram: a pressure meter reading is only as good as calibration, consolidation, and the aggregate correction.</figcaption>
+          </figure>
+        </div>
+        <details class="acc" open>
+          <summary>High-level step summary</summary>
+          <div class="acc-body">
+            <ol class="clean">
+              <li>Fill the bowl in equal layers; rod and tap as the method specifies; strike off flush.</li>
+              <li>Clean the flange, clamp the cover, and use the petcocks/water to remove trapped air from the lid space on Type B meters.</li>
+              <li>Pump or adjust to the initial pressure, close valves in the required order, and release the chamber into the bowl.</li>
+              <li>Tap and wait for a stable gauge reading.</li>
+              <li>Apply the aggregate correction factor. Report to the method’s precision (often 0.1%).</li>
+            </ol>
+          </div>
+        </details>
+        <div class="callout time"><span class="t">Must-do JTA ideas</span> Know when C231 is the wrong method (lightweight, slag, highly porous particles → volumetric C173). Know that calibration and aggregate correction are part of the test, not optional extras.</div>
+        <div class="callout pit"><span class="t">Common pitfalls</span> Dirty lid bowls that leak; skipping water through the petcocks; using last month’s correction factor on a new aggregate; reading the gauge before it settles; consolidating so violently that you knock out entrained air.</div>
+        <div class="self-check" data-quiz="c231"></div>
+        <div class="actions-row"><button class="btn primary" type="button" data-complete="c231">Mark C231 reviewed</button></div>
+      </section>
+
+      <!-- C173 -->
+      <section class="mod card" id="c173" data-mod="c173">
+        <div class="card-head">
+          <svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true">
+            <rect width="56" height="56" rx="12" fill="#1b365d"/>
+            <rect x="20" y="14" width="16" height="28" rx="6" fill="#c5d4e8"/>
+            <rect x="18" y="40" width="20" height="8" rx="2" fill="#ff8a3d"/>
+          </svg>
+          <div>
+            <span class="astm">ASTM C173 / C173M</span>
+            <h2>Air content by the volumetric method</h2>
+            <p class="lede" style="margin:0;">The roll-a-meter. Slower than pressure, and the right tool when aggregate pores would fool C231.</p>
+          </div>
+        </div>
+        <p class="banner">High-level educational outline only. Follow current C173 and the CP-1 workbook.</p>
+        <div class="grid-2">
+          <div>
+            <h3>Purpose &amp; significance</h3>
+            <p>The volumetric method displaces the concrete’s air with water (and isopropyl alcohol to kill foam) inside a calibrated neck. Because it does not assume incompressible aggregate, it is the field choice for lightweight and other porous particles.</p>
+            <h3>Key equipment</h3>
+            <ul class="clean">
+              <li>Calibrated bowl + neck (volumetric air meter)</li>
+              <li>70% isopropyl alcohol and calibrated cups/dispensers</li>
+              <li>Rod, mallet, strike-off, funnel, watertight cap</li>
+            </ul>
+          </div>
+          <div class="mini">
+            <h4>C231 vs C173 — choose with intent</h4>
+            <table>
+              <thead><tr><th></th><th>Pressure (C231)</th><th>Volumetric (C173)</th></tr></thead>
+              <tbody>
+                <tr><td>Normalweight, dense aggregate</td><td>Usual</td><td>Allowed</td></tr>
+                <tr><td>Lightweight / porous</td><td>Not appropriate</td><td>The field method</td></tr>
+                <tr><td>Speed</td><td>Faster</td><td>More inversion, rolling, standing</td></tr>
+                <tr><td>Foam / alcohol</td><td>Not the mechanism</td><td>Central to a valid reading</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <details class="acc" open>
+          <summary>High-level step summary</summary>
+          <div class="acc-body">
+            <ol class="clean">
+              <li>Fill the bowl in the specified layers (commonly two), rod and tap, strike off.</li>
+              <li>Attach the top section. Add water, then the initial measured alcohol, and cap watertight.</li>
+              <li>Invert and shake, then roll, using the method’s minimum times so the concrete actually moves.</li>
+              <li>Stand the meter upright, let foam settle, and read the neck. If foam is excessive, add measured alcohol as the method allows.</li>
+              <li>Repeat rolling/standing until consecutive readings agree within the method’s tolerance (often 0.25%).</li>
+              <li>Disassemble and inspect: a plug of undisturbed concrete means the test did not displace air — it is invalid.</li>
+            </ol>
+          </div>
+        </details>
+        <div class="callout pit"><span class="t">Common pitfalls</span> Weak rolling that never breaks the concrete mass; guessing alcohol instead of measuring it; stopping at the first foamy reading; skipping the post-test dump inspection; reporting more precision than the neck can support.</div>
+        <div class="self-check" data-quiz="c173"></div>
+        <div class="actions-row"><button class="btn primary" type="button" data-complete="c173">Mark C173 reviewed</button></div>
+      </section>
+
+      <!-- C31 -->
+      <section class="mod card" id="c31" data-mod="c31">
+        <div class="card-head">
+          <svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true">
+            <rect width="56" height="56" rx="12" fill="#1b365d"/>
+            <rect x="14" y="12" width="12" height="32" rx="2" fill="#c5d4e8"/>
+            <rect x="30" y="18" width="10" height="26" rx="2" fill="#ff8a3d"/>
+          </svg>
+          <div>
+            <span class="astm">ASTM C31 / C31M</span>
+            <h2>Making and curing test specimens in the field</h2>
+            <p class="lede" style="margin:0;">Cylinders are not souvenirs. Early temperature and moisture write the strength story.</p>
+          </div>
+        </div>
+        <p class="banner">High-level educational outline only. C31 is revised often. Follow the current standard and CP-1 workbook for temperatures, demolding, and transport windows.</p>
+        <div class="grid-2">
+          <div>
+            <h3>Purpose &amp; significance</h3>
+            <p>Field-made specimens estimate potential strength of the concrete as delivered — but only if molding, initial curing, transport, and final lab curing follow the method. A perfect slump test cannot rescue cylinders that froze, dried, or baked in a truck cab.</p>
+            <h3>Key equipment</h3>
+            <ul class="clean">
+              <li>Molds (commonly 6×12 in or 4×8 in cylinders) that hold dimension and do not leak</li>
+              <li>Matching tamping rod (larger rod for 6×12, smaller for 4×8)</li>
+              <li>Mallet, strike-off tools, vibration equipment if required</li>
+              <li>Initial-curing setup with temperature control and moisture protection, plus a min/max thermometer</li>
+              <li>Transport containers that cushion and prevent moisture loss / freezing</li>
+            </ul>
+          </div>
+          <figure class="diagram">
+            <svg viewBox="0 0 320 170" width="320" height="170" role="img" aria-label="6 by 12 cylinder three layers versus 4 by 8 two layers">
+              <rect x="50" y="20" width="70" height="130" rx="6" fill="#d9d3c8" stroke="#1b365d"/>
+              <path d="M50 63h70M50 106h70" stroke="#e85d04" stroke-dasharray="4 3"/>
+              <text x="50" y="16" font-size="11" fill="#1b365d">6×12 · 3 layers</text>
+              <rect x="190" y="46" width="50" height="104" rx="6" fill="#d9d3c8" stroke="#1b365d"/>
+              <path d="M190 98h50" stroke="#e85d04" stroke-dasharray="4 3"/>
+              <text x="188" y="40" font-size="11" fill="#1b365d">4×8 · 2 layers</text>
+            </svg>
+            <figcaption>Original diagram: layer count follows specimen size. Rod diameter follows specimen size too.</figcaption>
+          </figure>
+        </div>
+        <details class="acc" open>
+          <summary>High-level step summary</summary>
+          <div class="acc-body">
+            <ol class="clean">
+              <li>Place molds on a level, rigid surface away from vibration and traffic.</li>
+              <li>Fill in the specified number of equal layers; rod the specified strokes; tap the sides; strike off and finish the top.</li>
+              <li>Identify each specimen so it cannot be confused later.</li>
+              <li>Move immediately into initial curing: prevent moisture loss and hold temperature in the band required for that specified strength (commonly a wider band for ordinary strengths and a tighter, cooler-centered band for high-strength concrete).</li>
+              <li>Record curing temperatures (min/max is a frequent JTA theme).</li>
+              <li>After the initial-curing period, transport without jarring, freezing, or drying; then final-cure in the laboratory environment required by the method (moist, tightly controlled temperature).</li>
+            </ol>
+          </div>
+        </details>
+        <div class="callout time"><span class="t">Curing is part of the test</span> Acceptance cylinders that sat on a hot steel deck, in an open truck bed, or next to a space heater are not C31 specimens. Know the difference between initial field curing and standard lab curing — they answer different questions when a project uses both.</div>
+        <div class="callout pit"><span class="t">Common pitfalls</span> Using the ⅝-in rod in a 4×8 mold; two layers in a 6×12; moving soft cylinders; no lid / no wet burlap so the top dries; “curing box” that is just a cooler with no temperature check; vibrating high-slump concrete that should have been rodded (or the reverse).</div>
+        <div class="self-check" data-quiz="c31"></div>
+        <div class="actions-row"><button class="btn primary" type="button" data-complete="c31">Mark C31 reviewed</button></div>
+      </section>
+
+      <section class="mod card" id="quiz">
+        <p class="kicker">Original practice items</p>
+        <h2>Quiz mode</h2>
+        <p class="banner">These questions were written for this study file. They are not ACI practice-exam items and they are not a brain dump of any scored test. Use them to rehearse judgment. Confirm every numeric detail in your purchased ASTM standards.</p>
+        <div class="quiz-meta">
+          <div>Best score stored on this device: <strong id="bestScore">—</strong></div>
+          <div>Attempts: <strong id="attempts">0</strong></div>
+        </div>
+        <div id="quiz-controls" class="actions-row">
+          <button class="btn primary" id="quizStart" type="button">Start 20-question mix</button>
+          <button class="btn" id="quizTimed" type="button">Timed 25-min practice</button>
+          <button class="btn ghost" id="quizResetStats" type="button">Reset quiz stats</button>
+        </div>
+        <p id="quizTimer" style="display:none;font-weight:700;color:var(--orange);"></p>
+        <div id="quiz-box"></div>
+      </section>
+
+      <section class="mod card" id="resources">
+        <p class="kicker">Buy the real materials</p>
+        <h2>Official resources</h2>
+        <div class="grid-2">
+          <div>
+            <h3>ACI</h3>
+            <ul class="clean">
+              <li><a href="https://www.concrete.org" target="_blank" rel="noopener">ACI (concrete.org)</a> — certification program information</li>
+              <li><a href="https://www.concrete.org/store.aspx" target="_blank" rel="noopener">ACI Store</a> — search <strong>CP-1 Technician Workbook</strong> (latest edition)</li>
+              <li>Ask your Local Sponsoring Group for exam dates, performance sites, and which workbook edition they are testing to</li>
+            </ul>
+            <h3>ASTM International</h3>
+            <ul class="clean">
+              <li><a href="https://www.astm.org" target="_blank" rel="noopener">ASTM.org</a> — purchase current C172, C1064, C143, C138, C231, C173, and C31 (including M versions if you work in SI)</li>
+              <li>Do not study from unmarked photocopies or out-of-date PDFs circulating on jobs</li>
+            </ul>
+          </div>
+          <div class="mini">
+            <h4>Unofficial pre-exam checklist (original)</h4>
+            <ul class="clean">
+              <li>I own the current CP-1 workbook and have written in it.</li>
+              <li>I own or have legal access to the current seven ASTM methods.</li>
+              <li>I have run each test with real equipment, counting rods and watching a clock.</li>
+              <li>I can explain why C231 is the wrong air test on lightweight mix.</li>
+              <li>I can recite the sample clocks and the slump lift time without this page.</li>
+              <li>I know how my initial-curing box is checked and recorded.</li>
+            </ul>
+          </div>
+        </div>
+        <p style="margin-top:16px;">Need a reset? <button class="btn ghost" id="resetAll" type="button">Clear all local progress</button></p>
+      </section>
+
+      <footer class="footer">
+        <p><strong>Disclaimer.</strong> This unofficial HTML study aid is not affiliated with, endorsed by, or sponsored by the American Concrete Institute, ASTM International, or any Local Sponsoring Group. It must not be treated as ACI CP-1 content, an ASTM standard, a practice exam, or a performance checklist. Certification is granted only by ACI according to its current policies. Always follow the purchased standards and project specifications.</p>
+        <p>© <span id="year"></span> Local study companion. No ASTM or ACI text is reproduced. Works offline after the optional font files are cached.</p>
+      </footer>
+    </main>
+  </div>
+  <button class="icon-btn to-top" id="toTop" type="button" aria-label="Back to top">↑</button>
+
+  <script>
+  (function () {
+    const KEY = "aci-cp1-study-v1";
+    const $ = (s, r=document) => r.querySelector(s);
+    const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+
+    const state = load();
+    function load() {
+      try { return Object.assign({ done: {}, quizBest: 0, attempts: 0, theme: null }, JSON.parse(localStorage.getItem(KEY) || "{}")); }
+      catch { return { done: {}, quizBest: 0, attempts: 0, theme: null }; }
+    }
+    function save() { localStorage.setItem(KEY, JSON.stringify(state)); }
+
+    function applyTheme(theme) {
+      const t = theme || state.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", t);
+      state.theme = t; save();
+      $("#themeBtn").setAttribute("aria-label", t === "dark" ? "Switch to light theme" : "Switch to dark theme");
+    }
+    applyTheme();
+    $("#themeBtn").onclick = () => applyTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
+    $("#printBtn").onclick = () => window.print();
+    $("#year").textContent = new Date().getFullYear();
+
+    $("#studyBtn").onclick = () => {
+      document.body.classList.toggle("study");
+      const on = document.body.classList.contains("study");
+      $("#studyBtn").textContent = on ? "Exit study mode" : "Study mode";
+      $("#studyBtn").setAttribute("aria-pressed", String(on));
+      $$("details.acc").forEach(d => { d.open = on ? true : d.open; });
+      if (on) window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    const sidebar = $("#sidebar"), overlay = $("#overlay"), menuBtn = $("#menuBtn");
+    function setMenu(open) {
+      sidebar.classList.toggle("open", open);
+      overlay.classList.toggle("show", open);
+      overlay.hidden = !open;
+      menuBtn.setAttribute("aria-expanded", String(open));
+    }
+    menuBtn.onclick = () => setMenu(!sidebar.classList.contains("open"));
+    overlay.onclick = () => setMenu(false);
+    $$("#toc a").forEach(a => a.addEventListener("click", () => setMenu(false)));
+
+    function renderProgress() {
+      const ids = ["program","timing","c172","c1064","c143","c138","c231","c173","c31"];
+      const n = ids.filter(id => state.done[id]).length;
+      $("#progBar").style.width = (n / ids.length * 100) + "%";
+      $("#progText").textContent = n + " of " + ids.length + " method/program sections marked reviewed";
+      $("#headerProgress").textContent = n + "/" + ids.length + " reviewed";
+      ids.forEach(id => {
+        const link = $('#toc a[data-mod="'+id+'"]');
+        if (link) link.classList.toggle("done", !!state.done[id]);
+      });
+    }
+    function labelComplete(btn, on) {
+      btn.textContent = on ? "Reviewed ✓ (click to undo)" : btn.dataset.label;
+    }
+    $$("[data-complete]").forEach(btn => {
+      btn.dataset.label = btn.textContent;
+      labelComplete(btn, !!state.done[btn.getAttribute("data-complete")]);
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-complete");
+        state.done[id] = !state.done[id]; save(); renderProgress();
+        labelComplete(btn, !!state.done[id]);
+      });
+    });
+    renderProgress();
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        $$("#toc a").forEach(a => {
+          const on = a.getAttribute("href") === "#" + e.target.id;
+          a.classList.toggle("active", on);
+          if (on) a.setAttribute("aria-current", "page");
+          else a.removeAttribute("aria-current");
+        });
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    $$("section.mod[id]").forEach(s => io.observe(s));
+
+    $("#toTop").onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+    /* ---------- questions (original) ---------- */
+    const BANK = {
+      c172: [
+        { q: "A truck is discharging. The first concrete looks wetter than the rest, so a technician fills the entire sample pan from the start of the load. What is the core problem?",
+          opts: ["Wet concrete always makes better cylinders","The beginning (and end) of discharge are not representative of the batch","C172 requires sampling only after the truck is empty","You must wait 30 minutes before sampling"],
+          a: 1, why: "Composite samples are taken from the middle portion of discharge at more than one interval so the tests represent the batch, not a segregated first or last fraction." },
+        { q: "Why remix the composite before starting slump and air?",
+          opts: ["To add water lost in sampling","To drive out entrained air so slump is higher","To restore uniformity after combining portions taken at different times","Remixing is optional if the pan looks gray"],
+          a: 2, why: "Portions taken minutes apart can differ. Remixing is how the composite becomes one sample." },
+        { q: "You need cylinders plus slump and air. Which planning idea is most important?",
+          opts: ["Grab whatever remains after the air test","Make sure the composite is large enough and start fresh-property tests immediately so specimen molding still fits its clock","Skip temperature to save time","Sample from a pile beside the pump"],
+          a: 1, why: "Strength work needs an adequate volume, and C172’s clocks for fresh tests vs. specimens compete with each other if you dawdle." }
+      ],
+      c1064: [
+        { q: "A probe is stuck only ½ in into the surface crust of a wheelbarrow sitting in sun. Why is that not a C1064 temperature?",
+          opts: ["Surface crust is always 10°F hotter, which is conservative","The sensor must be immersed and surrounded so it reads the concrete mass, not a skin or the pan","Thermometers are only for lab use","You should average air temperature with the concrete"],
+          a: 1, why: "Cover and immersion exist so the instrument equilibrates with the concrete, not with radiation or a thin mortar film." },
+        { q: "The display flickers between 71 and 73°F after 20 seconds. Best action?",
+          opts: ["Record 72°F and move on","Leave the sensor in place until the reading stabilizes within the method’s time window, then record to the required resolution","Blow on the stem to cool it","Pull it out so you can see the scale better"],
+          a: 1, why: "Temperature tests include a wait for equilibrium (commonly a 2–5 minute idea) and a defined reporting increment." },
+        { q: "Why is thermometer accuracy itself a JTA topic?",
+          opts: ["Because ACI sells thermometers","Specification and mixture decisions may hinge on a degree or two; an uncalibrated gadget is not a test method","Accuracy only matters below freezing","Any phone infrared gun is equivalent"],
+          a: 1, why: "The method specifies instrument performance. A number without a qualified sensor is not C1064." }
+      ],
+      c143: [
+        { q: "Why are the three slump-cone lifts equal volume rather than equal height?",
+          opts: ["It looks nicer on photos","The cone tapers, so equal heights would put too much concrete in the bottom lift","ASTM requires metric scoops only","Rods only fit equal heights"],
+          a: 1, why: "A frustum holds more volume near the base. Equal-volume layers keep consolidation comparable through the specimen." },
+        { q: "After a vertical lift, half the concrete shears off to one side. What do you do?",
+          opts: ["Measure the remaining half and double it","Record “shear slump” as 0","Discard and run a new test from the remaining composite (if still representative and within time)","Push it back up with the rod"],
+          a: 2, why: "A decided shear or fall-away is not a slump result. The method’s answer is a retest, not a creative measurement." },
+        { q: "Which combination is the slump test’s identity?",
+          opts: ["Any bucket, 10 rods, lift however","12×8×4 in mold, 25 rods per equal-volume layer, 5 ± 2 s vertical lift, measure the original center","Vibrate the cone for 30 seconds","Fill in one layer if slump is high"],
+          a: 1, why: "Slump is a standardized geometry-and-time procedure. Change the ritual and you are not measuring slump." }
+      ],
+      c138: [
+        { q: "Density comes out low and yield comes out high on a truck that also had high air. What story is that telling?",
+          opts: ["The scale is always wrong when air is high","More air lowers density, so a cubic yard of concrete weighs less and the same batch mass occupies more volume","You should add water until density rises","Yield is independent of air"],
+          a: 1, why: "Mass is roughly fixed by the batch weights; extra air increases volume and drops unit weight. That is why C138, air tests, and batch tickets are read together." },
+        { q: "You strike off a mounded bowl because “a little extra is conservative.” What did you actually do?",
+          opts: ["Improved accuracy","Changed the volume of the measure, which corrupts density","Cancelled the mallet taps","Converted the test into C231"],
+          a: 1, why: "Density is mass divided by the calibrated volume. Extra concrete on top means you are no longer using that volume." },
+        { q: "Why clean the exterior before weighing?",
+          opts: ["Appearance for the inspector","Mortar on the outside is mass that is not inside the known volume","To cool the bowl","C138 forbids fingerprints"],
+          a: 1, why: "Only the concrete occupying the measure should be in the mass used for D." }
+      ],
+      c231: [
+        { q: "Expanded shale lightweight mix is on the ticket. Why reach for C173 instead of the Type B meter?",
+          opts: ["C173 is always faster","Porous aggregate can compress or hold air so a pressure reading is not the concrete’s air","Pressure meters explode on lightweight","C231 requires siliceous sand only"],
+          a: 1, why: "Pressure methods assume aggregate is not a compressible air reservoir. Lightweight and similar particles break that assumption." },
+        { q: "What is an aggregate correction factor doing in C231?",
+          opts: ["Converting slump to air","Removing the apparent “air” that comes from aggregate particles so the reported value is closer to the mortar/concrete air of interest","Correcting for truck drum size","A paperwork leftover from 1950"],
+          a: 1, why: "Even normalweight aggregates can contribute a small pressure response. The correction is part of using the method honestly." },
+        { q: "Petcocks still blow bubbles when you inject water under the Type B lid. If you close them anyway, you risk:",
+          opts: ["A slightly wetter cylinder","Air trapped above the concrete that the gauge will treat as if it were in the mix","A better reading because bubbles are extra air","Nothing; bubbles are alcohol foam"],
+          a: 1, why: "The lid space is supposed to be de-aired with water. Leftover bubbles belong to the apparatus, not the concrete." }
+      ],
+      c173: [
+        { q: "After rolling, the neck is a thick collar of foam. Why isn’t that your air content yet?",
+          opts: ["Foam is extra strength","Foam occupies the neck so the liquid line is not a clean displaced-air reading; alcohol and more rolling/standing are how the method fights that","You should add the foam height to the reading","Foam means zero air"],
+          a: 1, why: "The volumetric test is a displacement reading. Foam hides the meniscus. Alcohol and repetition exist to make the line readable and repeatable." },
+        { q: "You dump the bowl and find a hockey-puck of untouched concrete. The test is:",
+          opts: ["Fine if the neck reading looked stable","Invalid — air was not displaced from that mass","Only invalid for lightweight","Saved by adding 1%"],
+          a: 1, why: "Undisturbed concrete means inversion/rolling never did the job. That is a failed test, not a number to write on a ticket." },
+        { q: "Why do consecutive readings have to agree closely (often taught as 0.25%)?",
+          opts: ["To match Type B precision exactly","Because foam and incomplete mixing make a single glance unreliable","ACI likes even numbers","So you can average with slump"],
+          a: 1, why: "Repeatability is the volumetric method’s quality control. If rolling still changes the line, you are not done." }
+      ],
+      c31: [
+        { q: "6×12 in cylinders get three layers and a ⅝-in rod, while 4×8 in cylinders get two layers and a ⅜-in rod. The idea is:",
+          opts: ["Smaller molds are weaker so they need a skinny rod","Layer volume and rod diameter are scaled to specimen size so consolidation is comparable","4×8 cylinders must be vibrated always","Layer count is the technician’s preference"],
+          a: 1, why: "C31 standardizes consolidation energy relative to the mold. Mixing up rods or layer counts changes the specimen." },
+        { q: "Overnight the “curing box” hits 95°F because it sat in a closed truck. Why argue about that at 28 days?",
+          opts: ["Heat always increases true in-place strength of the structure by the same amount","Initial-curing temperature is part of the test conditions; overheating field cylinders distorts the strength number used for acceptance","C31 only cares about moisture, not temperature","95°F is the lab standard"],
+          a: 1, why: "Early heat and drying change hydration. That is why C31 temperature bands and moisture protection are exam and job-site essentials." },
+        { q: "High-slump pavement mix is being cylindered. Someone wants to vibrate “to be extra consolidated.” Risk?",
+          opts: ["Vibration is required above 8 in slump","You may drive out air and alter the specimen relative to the specified rodding procedure","Vibration makes identification labels stick better","There is no risk"],
+          a: 1, why: "Consolidation method follows consistency. Using the wrong energy makes a different specimen than the standard describes." }
+      ]
+    };
+
+    const MIX = [
+      { q: "Grade I field certification is built around which pairing?",
+        opts: ["Online quiz only","A knowledge exam and a hands-on performance of the required methods","Slump test only","Producer’s in-house orientation"],
+        a: 1, why: "The credential is not a participation trophy: written knowledge and demonstrated procedure both matter. Confirm current ACI rules when you schedule." },
+      { q: "The JTA is most useful as:",
+        opts: ["A replacement for ASTM documents","A public blueprint of tasks the exams are designed to sample","The performance examiner’s secret score sheet you should memorize word-for-word","A truck-batching app"],
+        a: 1, why: "Study what the JTA says you must know and do, then learn those things from the official standards and workbook." },
+      { q: "Which sequence best respects the short clocks after a composite is made?",
+        opts: ["Cylinders first, lunch, then slump","Temperature and slump/air immediately, then mold specimens","Air meter calibration during the 5-minute window using the sample","Wait until the load is finished pouring the whole deck"],
+        a: 1, why: "Fresh properties move fastest. Specimens have a slightly longer start window but still need the same composite." },
+      { q: "Minimum composite size is a bigger deal when:",
+        opts: ["You only need a temperature","You will mold strength specimens and run multiple fresh tests from the same sample","The inspector is watching","The mix is white cement"],
+        a: 1, why: "Strength work is commonly taught around a 1 ft³ / 28 L idea so you are not scraping leftovers." },
+      { q: "A slump cone is lifted with a twisting flourish in about 12 seconds. The result is mainly measuring:",
+        opts: ["True slump","How the concrete responds to a nonstandard lift — which is not the C143 number","Viscosity per ASTM C174","Air content"],
+        a: 1, why: "Lift time and a vertical, untwisted motion are part of the definition of the test." },
+      { q: "Report slump to which commonly cited increment?",
+        opts: ["0.01 in","Nearest ¼ in (5 mm)","Nearest 2 in","Whatever the phone camera estimates"],
+        a: 1, why: "Over-precise reporting pretends the method has resolution it does not." },
+      { q: "Unit weight bowl exterior is caked with mortar. Density will tend to be:",
+        opts: ["Unchanged","Too high because extra mass is included","Too low because volume increased","Converted into yield automatically"],
+        a: 1, why: "Extra mass that is not in the calibrated volume raises D." },
+      { q: "Relative yield greater than 1.00 suggests:",
+        opts: ["The batch produced more volume than the design volume (often air, water, or batching)","The truck was empty","Slump was zero","Cylinders will automatically pass"],
+        a: 0, why: "Yield compares produced volume with intended volume. Over-yield is a clue, not a moral victory." },
+      { q: "Type B meter gauge is read instantly as the lever is thrown, needle still swinging. Problem?",
+        opts: ["None; first flash is most accurate","The method expects a stabilized reading after the specified tapping/wait","You must average with C173 always","The needle only swings on lightweight"],
+        a: 1, why: "A moving needle is not a reported air content." },
+      { q: "Why dampen a slump cone and base without leaving puddles?",
+        opts: ["To add water to the mix in a controlled way","To reduce friction/absorption without diluting the sample","Because dry steel is illegal","To cool high-temperature concrete"],
+        a: 1, why: "Dry absorbent surfaces steal moisture; free water adds it. Damp is the compromise the method is aiming at." },
+      { q: "Rodding the second slump layer should:",
+        opts: ["Stop at the new concrete only","Penetrate through the new layer and just into the layer below","Punch all the way through to the plate every stroke","Be replaced by 25 mallet blows"],
+        a: 1, why: "The penetration rule knits layers together without systematically drilling voids to the plate." },
+      { q: "Initial curing of field cylinders is primarily trying to control:",
+        opts: ["28-day shipping labels","Moisture loss and temperature in a specified band until the specimens go to standard lab curing","Only sunlight, not wind","The producer’s overtime"],
+        a: 1, why: "Those two — water and heat — dominate early hydration." },
+      { q: "A 4×8 mold is filled in three heavily rodded layers with a ⅝-in rod. Likely issue?",
+        opts: ["Extra consolidation always matches 6×12 results better","Wrong layer count and wrong rod for that specimen size","C31 requires this for all high-strength concrete","It only matters for beams"],
+        a: 1, why: "Match mold, layers, and rod. Do not import the 6×12 ritual into a 4×8." },
+      { q: "Wet-sieving before slump is about:",
+        opts: ["Removing air","Removing aggregate larger than the slump method can handle so the test is run on the appropriate fraction, then remixing","Making the mix legal for pumping","Reducing temperature"],
+        a: 1, why: "Each test has a maximum aggregate idea. Wet-sieving is how you stay inside it without inventing a new mix in the pan." },
+      { q: "Why record min/max temperature of the initial-curing environment?",
+        opts: ["For fun graphs","Because a single glance at noon does not prove the cylinders lived in the required band overnight","C31 forbids thermometers in the box","Only the lab records temperature"],
+        a: 1, why: "Overnight excursions are exactly when cylinders get cooked or chilled." },
+      { q: "If two C173 neck readings still disagree after extra rolling, you should:",
+        opts: ["Average them and ship it","Keep following the method’s repeat/foam/alcohol rules; if it never stabilizes or you find undisturbed concrete, the test is not valid","Switch the numbers with C231","Add water until they match"],
+        a: 1, why: "The volumetric test includes a built-in ‘this didn’t work’ path. Use it." },
+      { q: "Strike-off on an air bowl exists to:",
+        opts: ["Polish aggregate","Set a known volume before the lid goes on","Increase slump","Warm the flange"],
+        a: 1, why: "Air content is a volume percentage. The bowl must be a known volume of concrete." },
+      { q: "Protecting the sample from wind and sun is not nicety because:",
+        opts: ["Inspectors dislike dusty pans","Evaporation and temperature change alter slump, air, and the concrete you will mold","Wind adds entrained air automatically","Sunlight is a required curing method"],
+        a: 1, why: "The composite is a perishable specimen of fresh concrete." },
+      { q: "Performance-exam mindset that actually helps:",
+        opts: ["Memorize unofficial internet answer keys","Practice the physical sequence until counts, lifts, and clocks are automatic, using legal equipment","Argue with the examiner about 2012 ASTM language","Skip tapping to save time"],
+        a: 1, why: "The performance test is a demonstration of habits. Build those habits with the real methods in your hands." },
+      { q: "This HTML file should be used as:",
+        opts: ["A replacement for CP-1 and ASTM","An organizer and self-check after you study official documents you purchased","An official ACI exam","A calibration certificate"],
+        a: 1, why: "If you only study this page, you are not prepared. Buy the workbook and the standards." }
+    ];
+
+    function shuffle(arr) {
+      const a = arr.slice();
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    function mountMiniQuizzes() {
+      $$(".self-check").forEach(el => {
+        const key = el.getAttribute("data-quiz");
+        const items = BANK[key] || [];
+        el.innerHTML = "<h3>Quick self-check (original)</h3>";
+        items.forEach((item, i) => el.appendChild(renderQuestion(item, key + "-" + i, true)));
+      });
+    }
+
+    function renderQuestion(item, id, mini) {
+      const wrap = document.createElement("div");
+      wrap.className = "q";
+      wrap.innerHTML = "<p>" + item.q + "</p>";
+      const opts = document.createElement("div");
+      opts.className = "opts";
+      item.opts.forEach((text, idx) => {
+        const lab = document.createElement("label");
+        lab.innerHTML = '<input type="radio" name="'+id+'"> <span>'+text+"</span>";
+        lab.querySelector("input").addEventListener("change", () => {
+          [...opts.children].forEach((l, j) => {
+            l.classList.remove("correct","wrong");
+            if (j === item.a) l.classList.add("correct");
+          });
+          if (idx !== item.a) lab.classList.add("wrong");
+          why.classList.add("show");
+          wrap.dataset.answered = "1";
+          wrap.dataset.ok = idx === item.a ? "1" : "0";
+        });
+        opts.appendChild(lab);
+      });
+      const why = document.createElement("div");
+      why.className = "explain";
+      why.textContent = "Why: " + item.why;
+      wrap.appendChild(opts);
+      wrap.appendChild(why);
+      if (!mini) wrap.dataset.score = "1";
+      return wrap;
+    }
+
+    mountMiniQuizzes();
+
+    let timer = null, deadline = 0;
+    function stopTimer() {
+      clearInterval(timer); timer = null;
+      $("#quizTimer").style.display = "none";
+    }
+    function startQuiz(timed) {
+      stopTimer();
+      const pick = shuffle(MIX).slice(0, 20);
+      const box = $("#quiz-box");
+      box.innerHTML = "";
+      pick.forEach((item, i) => box.appendChild(renderQuestion(item, "mix-"+i, false)));
+      const finish = document.createElement("button");
+      finish.className = "btn primary";
+      finish.type = "button";
+      finish.textContent = "Score this attempt";
+      finish.onclick = () => {
+        stopTimer();
+        const qs = $$("#quiz-box .q");
+        let right = 0, answered = 0;
+        qs.forEach(q => {
+          if (q.dataset.answered) { answered++; if (q.dataset.ok === "1") right++; }
+          q.querySelector(".explain")?.classList.add("show");
+        });
+        const pct = Math.round(right / qs.length * 100);
+        state.attempts = (state.attempts || 0) + 1;
+        state.quizBest = Math.max(state.quizBest || 0, right);
+        save();
+        $("#bestScore").textContent = state.quizBest + " / 20";
+        $("#attempts").textContent = state.attempts;
+        const recap = document.createElement("div");
+        recap.className = "callout ok";
+        recap.setAttribute("role", "status");
+        recap.innerHTML = "<span class='t'>Attempt result</span><div class='score-ring'>"+pct+"%</div> You got <strong>"+right+"</strong> of "+qs.length+" correct ("+answered+" answered). This is not an ACI score and not a passing prediction. Review missed ‘why’ notes, then verify the point in ASTM.";
+        box.prepend(recap);
+        finish.disabled = true;
+      };
+      box.appendChild(finish);
+      if (timed) {
+        deadline = Date.now() + 25 * 60 * 1000;
+        $("#quizTimer").style.display = "block";
+        timer = setInterval(() => {
+          const s = Math.max(0, Math.round((deadline - Date.now()) / 1000));
+          $("#quizTimer").textContent = "Time left: " + Math.floor(s/60) + ":" + String(s%60).padStart(2,"0");
+          if (s <= 0) { finish.click(); }
+        }, 250);
+      }
+    }
+    $("#quizStart").onclick = () => startQuiz(false);
+    $("#quizTimed").onclick = () => startQuiz(true);
+    $("#bestScore").textContent = state.quizBest ? (state.quizBest + " / 20") : "—";
+    $("#attempts").textContent = state.attempts || 0;
+    $("#quizResetStats").onclick = () => {
+      state.quizBest = 0; state.attempts = 0; save();
+      $("#bestScore").textContent = "—"; $("#attempts").textContent = "0";
+    };
+    $("#resetAll").onclick = () => {
+      if (confirm("Clear reviewed modules and quiz stats on this device?")) {
+        localStorage.removeItem(KEY);
+        location.reload();
+      }
+    };
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "t" && !/input|textarea/i.test(e.target.tagName)) {
+        $("#themeBtn").click();
+      }
+    });
+  })();
+  </script>
+</body>
+</html>
