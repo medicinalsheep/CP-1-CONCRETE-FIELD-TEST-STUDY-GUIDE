@@ -4,6 +4,8 @@ Interactive, single-file study companion for **ACI Concrete Field Testing Techni
 
 **This is not ACI or ASTM material.** It does not replace the official ACI CP-1 Technician Workbook or the current ASTM standards. Buy those documents and use this page only as a high-level organizer and self-check.
 
+**Last updated:** September 9, 2026
+
 ## Live site
 
 [Open the study guide](https://medicinalsheep.github.io/CP-1-CONCRETE-FIELD-TEST-STUDY-GUIDE/)
@@ -20,7 +22,7 @@ High-level educational summaries of the seven field methods typically required f
 - ASTM C173 — Volumetric air
 - ASTM C31 — Making and curing specimens
 
-Includes original self-check questions, a quiz mode, progress tracking (browser `localStorage`), light/dark theme, and print/study layouts.
+Includes original self-check questions, overall + per-method quiz modes, a field workflow checklist, progress tracking (browser `localStorage`), quick-search jump, light/dark theme, study mode, and print layouts. Soft timing language always pairs with a verify-in-current-ASTM note.
 
 ## Run locally
 
